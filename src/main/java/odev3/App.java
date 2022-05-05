@@ -22,15 +22,13 @@ public class App {
         return "Hello world.";
     }
 
-
-
     public static void main(String[] args) {
-
         System.out.println(new App().getGreeting());
-
 
         Logger logger=LogManager.getLogger(App.class);
         logger.error("hello world");
+
+
 
         get("/", (req, res) -> "Odev3");
 

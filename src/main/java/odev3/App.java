@@ -25,9 +25,14 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
 
+        
+
         Logger logger=LogManager.getLogger(App.class);
         logger.error("hello world");
 
+        int port =Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current  port number:"+ port);
 
 
         get("/", (req, res) -> "Odev3");

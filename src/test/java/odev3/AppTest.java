@@ -17,31 +17,31 @@ class AppTest {
 
 
     @Test
-    public void Test1(){
+    public void TestBuyuktur(){
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
         assertTrue(App.eleman_karsilastir(array, 3, 2, ">"));
     }
 
     @Test
-    public void Test2(){
+    public void TestKucukDegildir(){
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(2,4,1,4,5,6,7));
         assertFalse(App.eleman_karsilastir(array, 4, 1, "<"));
     }
 
     @Test
-    public void Test3(){
+    public void TestYanlisSembol(){
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(5,4,2,4,1,3));
         assertFalse(App.eleman_karsilastir(array, 5, 2, "-"));
     }
 
     @Test
-    public void Test4(){
+    public void TestBosListe(){
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList());
         assertFalse(App.eleman_karsilastir(array, 3, 6, "<"));
     }
 
     @Test
-    public void Test5(){
+    public void TestBulunmayanIndex(){
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(0,1,2));
         assertFalse(App.eleman_karsilastir(array, 4, 8, ">"));
     }

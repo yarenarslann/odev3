@@ -23,20 +23,20 @@ public class App {
     }
 
     public static void main(String[] args) {
+
         System.out.println(new App().getGreeting());
 
-        
-
+        //termniale cikti vermek icin kullaniliyor.
         Logger logger=LogManager.getLogger(App.class);
         logger.error("hello world");
 
+        //localde hangi portta calisilacagini belirtip hata durumunda terminale yazdiriyoruz.
         int port =Integer.parseInt(System.getenv("PORT"));
         port(port);
         logger.error("Current  port number:"+ port);
 
-
+        //html'de get metodu cagirmak icin kullanilir, kullanici girdigi girdilere gore ciktiyi cagiracak. Bunun icin kullanilmakta.
         get("/", (req, res) -> "Odev3");
-
         get("/compute",
         (rq, rs) -> {
              Map<String, String> map = new HashMap<String, String>();
@@ -46,8 +46,9 @@ public class App {
         new MustacheTemplateEngine()
         );
 
+        //post metodu html'de gondermek icin kullanilir. Form icerisine yazilan girdileri aliyoruz.
+        //Gerekli donusumler yapildiktan sonra fonksiyona gonderiyoruz.
         post("/compute", (req, res) -> {
-
             String input1 = req.queryParams("input1");
             java.util.Scanner sc1 = new java.util.Scanner(input1);
             sc1.useDelimiter("[;\r\n]+");
@@ -71,7 +72,6 @@ public class App {
             Map<String, Boolean> map = new HashMap<String, Boolean>();
             map.put("result", result);
             return new ModelAndView(map, "compute.mustache");
-
             },
             new MustacheTemplateEngine()
             );
@@ -83,20 +83,25 @@ public class App {
 
     public static boolean eleman_karsilastir(ArrayList<Integer> array, int index, int index2, String sembol){
         boolean cikti=false;
+        //eger girilen index'ler eleman sayisindan buyukse false donder.
         if((array.size()<=index) || (array.size()<=index2)){
 
         }
+        //degilse islemleri yap
         else{
+            //eger buyuktur isareti girilmisse
             if(sembol.equals(">")){
+                //kiyasla, duruma gore cikti degerini guncelle
                 if(array.get(index)>=array.get(index2)){
                     cikti=true;
                 }
                 else{
                     cikti=false;
                 }
-                
             }
+            //kucuktur isareti girilmisse
             else if(sembol.equals("<")){
+                //duruma gore cikti'yi guncelle.
                 if(array.get(index)<array.get(index2)){
                     cikti=true;
                 }
@@ -104,10 +109,7 @@ public class App {
                     cikti=false;
                 }
             }
-            
-
         }
-
         return cikti;
     }
 }
